@@ -1,0 +1,77 @@
+//"login.html"
+  login part is from the CS50 course https://cs50.harvard.edu/x/2024/notes/9/#flask-and-sql
+  display "sign up form" with fields
+    - Email
+    - Password
+    
+    cookies are from cs50 lessons
+
+Display "submit"
+
+If user submits form:
+  Validate input data
+  check if valdid
+    save user information in database
+    redirect to page setup
+else:
+  display error message
+    return to sign up form
+
+// Setup page"
+  display "setup page"
+    - weight
+    - height
+    - Gender (No bool but check box, in display)
+
+  Display Calculate BMI button
+
+  When BMI button clicked:
+    BMI = calculate BMI
+    Move to "CGoals"
+
+// "Cgoals"
+  display  kcal, co2 and macro ideals to User
+
+  Display bottons for:
+  - Maintain weight
+  - gain weight
+  - Loose weight
+allow user to click on ONE
+
+// "Search food"
+Display in search
+- Search field
+- Allow users to find ingredient from database(based on first three characters)
+- Choose amount in grams
+
+(further work-- allow people to add several items and save to a recepie, allow user to name reciepie, save as part in meal(breakfast, lunch, dinner, snacks) )
+
+Calculate ingredient in macro
+
+Display all ingredients added to a list
+- List of ingrediets added by user
+- delete botton
+
+// "Personal page"(front page)
+
+Display
+- macro
+- co2
+- kcal
+
+Display further down
+- history of personal info
+- Update personal info
+
+
+//table_user.py and table_food.py is based upon cs50 guide, lecture SQL week 7
+
+Requirements for user data bruger
+Email
+ replace with username
+
+
+
+
+
+

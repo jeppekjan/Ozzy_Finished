@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/home/ubuntu"
+		},
+		{
+			"name": "DAD7-G5",
+			"path": "/home/ubuntu/DAD7-G5"
+		}
+	],
+	"settings": {
+		"gitdoc.enabled": true
+	}
+}

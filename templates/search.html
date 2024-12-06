@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ozzy the Orange Ostrich</title>
+  <!-- Link to Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  
+  {% if Username %}
+  <p>You are logged in as {{ Username }}. <a href="/logout">Log out</a>.</p>
+  {% else %}
+  <p style="display: inline;">You are not logged in </p>
+  <button type="button" class="button" onclick="window.location.href='/login'">Log in</button>
+  {% endif %}
+
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('frontpage') }}">Frontpage</a></li>
+      <li><a href="{{ url_for('information') }}">Information</a></li>
+      <li><a href="{{ url_for('search') }}">Search</a></li>
+    </ul>
+  </nav>
+
+  <form action="{{ url_for('search') }}" method="get" class="example">
+    <input type="text" placeholder="Search for ingredients..." name="search" value="{{ request.args.get('search', '') }}">
+    <button type="submit"><i class="fa fa-search"></i> Search</button>
+  </form>
+
+  <!-- Display Search Results -->
+  {% if results %}
+    <h3>Search Results:</h3>
+    <form method="POST" action="{{ url_for('search') }}">
+        <!-- Product Name Dropdown -->
+        <label for="Navn">Product Name:</label>
+        <select id="Navn" name="Navn" required>
+            <option value="" disabled selected>Select a product</option>
+            {% for product in results %}
+                <option value="{{ product[0] }}">{{ product[0] }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Grams Input -->
+        <label for="grams">Grams:</label>
+        <input type="number" id="grams" name="grams" required>
+
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+    </form>
+  {% else %}
+    {% if request.args.get('search') %}
+        <p>No results found. Please try again.</p>
+    {% endif %}
+  {% endif %}
+
+  <!-- Display selected foods and their details with a "Remove" button -->
+  {% if selected_foods %}
+    <h3>Your Selected Foods:</h3>
+    <form method="POST" action="{{ url_for('search') }}">
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Food</th>
+            <th>Grams</th>
+            <th>CO2 (kg)</th>
+            <th>Protein (g)</th>
+            <th>Carbs (g)</th>
+            <th>Fat (g)</th>
+            <th>Calories (kcal)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for food in selected_foods %}
+            <tr>
+              <td>
+                <!-- Trash can icon as remove button -->
+                <button type="submit" name="remove_food" value="{{ loop.index0 }}">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+              <td>{{ food.product_name }}</td>
+              <td>{{ food.grams }}</td>
+              <td>{{ food.co2 }}</td>
+              <td>{{ food.protein }}</td>
+              <td>{{ food.carbs }}</td>
+              <td>{{ food.fat }}</td>
+              <td>{{ food.calories }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+
+    <!-- Total Nutritional Information and CO2 Comparison -->
+    <h3>Your Nutritional Overview and CO2 Comparison:</h3>
+    <div style="display: flex; align-items: center;">
+      <!-- Ernæringsoversigt -->
+      <div style="flex: 1; padding: 10px;">
+        <h4>Total Nutritional Information:</h4>
+        <table>
+          <tr>
+            <td>Total CO2:</td>
+            <td>{{ total_co2 }} kg</td>
+          </tr>
+          <tr>
+            <td>Total Protein:</td>
+            <td>{{ total_protein }} g</td>
+          </tr>
+          <tr>
+            <td>Total Carbs:</td>
+            <td>{{ total_carbs }} g</td>
+          </tr>
+          <tr>
+            <td>Total Fat:</td>
+            <td>{{ total_fat }} g</td>
+          </tr>
+          <tr>
+            <td>Total Calories:</td>
+            <td>{{ total_calories }} kcal</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- CO2 Sammenligning med Smiley -->
+      <div style="flex: 1; padding: 10px; text-align: center;">
+        <h4>CO2 Comparison:</h4>
+        <p style="color: {{ co2_color }};">{{ co2_comparison }}</p>
+        <!-- Smiley baseret på CO2-niveau -->
+        <div>
+          {% if co2_color == 'green' %}
+            <span style="font-size: 50px;">😊</span>
+          {% elif co2_color == 'yellow' %}
+            <span style="font-size: 50px;">😐</span>
+          {% else %}
+            <span style="font-size: 50px;">☹️</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozzy the Orange Ostrich</title>
+</head>
+<body>
+
+    <!-- Sign Up Link -->
+    <p style="display: inline;">Not signed up yet? </p>
+    <button type="button" onclick="window.location.href='/index'">Go to Sign Up</button>
+
+    <!-- Login Form -->
+    <form action="/login" method="post">
+        <h1>Login</h1>
+        <input autocomplete="off" autofocus name="Email" placeholder="Email" type="email" required>
+        <input autocomplete="off" name="Password" placeholder="Password" type="password" required>
+        
+        <!-- Error Message (conditionally displayed) -->
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        
+        <button type="submit">Log in</button>
+        <label>
+            <input type="checkbox" name="Remember"> Remember
+        </label>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>Ozzy the Orange Ostrich</title>
+</head>
+<body>
+    {% if Username %}
+    <p>You are logged in as {{ Username }}. <a href="/logout">Log out</a>.</p>
+    {% else %}
+    <p style="display: inline;">You are not logged in. </p>
+    <button type="button" onclick="window.location.href='/'">Log in</button>
+    {% endif %}
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('frontpage') }}">Frontpage</a></li>
+            <li><a href="{{ url_for('information') }}">Information</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+        </ul>
+    </nav>
+
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        </style>
+
+    <div class="bg-image img1"></div>
+    <div class="bg-image img2"></div>
+    <div class="bg-image img3"></div>
+    <div class="bg-image img4"></div>
+    <div class="bg-image img5"></div>
+    <div class="bg-image img6"></div>
+    <div class="bg-text">TEXT</div>
+
+
+
+
+    <!-- Main Content -->
+    <p>Transparency</p>
+    <p>Tips & Tricks for health inside and out</p>
+</body>
+</html>

@@ -1,0 +1,292 @@
+/*_______________________________________________________________General styles______________________________________________________________________ */
+
+
+body {
+
+    font-family: 'Monaco', monospace;
+    font-size: 15px;
+    font-weight: 900;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4ede5;
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+.square {
+  width: 300px;               /* Set the width of the square */
+  height: 400px;              /* Set the height to make it square */
+  background-color: #F5C74D;  /* Green background color */
+  color: white;               /* Text color */
+  font-size: 20px;            /* Text size */
+  display: flex;              /* Use flexbox for centering text */
+  justify-content: center;    /* Center the text horizontally */
+  align-items: center;        /* Center the text vertically */
+  margin: 20px auto;          /* Center the square horizontally */
+  text-align: center;         /* Ensure text is centered */
+  border-radius: 10px;        /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+}
+
+/* Button hover effect */
+.button {
+  padding: 5px 10px; /* Add some padding for better appearance */
+  font-size: 0.8rem; /* Adjust font size */
+  background-color: #8894B7; /* Initial background color */
+  color: white; /* Initial text color */
+  border: 2px solid #ccc; /* Add a border */
+  border-color: #8894B7;
+  border-radius: 5px; /* Round the corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition-duration: 0.4s; /* Smooth transition */
+}
+
+.button:hover {
+  background-color: #5f6780;
+  color: white; /* White text on hover */
+}
+
+      /* Container to hold both text and graph */
+      .section-container {
+  display: flex;        /* Flexbox for side-by-side layout */
+  justify-content: space-between;  /* Space out the elements */
+  align-items: flex-start;  /* Align items to the top */
+  padding: 20px;
+  margin: 0 auto;
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #8894B7;
+    display: flex;  /* Flexbox for horizontal layout */
+    justify-content: space-evenly;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #5f6780;
+  }
+
+h1, h2 {
+    color: #333;
+    font-family: 'Monaco', monospace;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+/*_______________________________________________________________frontpage.html______________________________________________________________________ */
+
+/* Square with text on the left */
+.text-box {
+  width: 45%;           /* Set width for the text box */
+  background-color: #F5C74D; /* Background color */
+  color: white;         /* Text color */
+  padding: 20px;        /* Padding inside the box */
+  border-radius: 10px;  /* Optional rounded corners */
+  font-size: 1.2rem;    /* Font size */
+  text-align: center;   /* Center text horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Graph (on the right) */
+.graph {
+width: 45%;           /* Set width for the graph */
+background-color: #e7e7e7; /* Light gray background */
+border-radius: 10px;  /* Rounded corners */
+padding: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+height: 300px;        /* Set fixed height for the graph */
+display: flex;         /* Enable flexbox */
+justify-content: center;  /* Center content horizontally */
+align-items: center;      /* Center content vertically */
+overflow: hidden;         /* Ensure content doesn't overflow */
+}
+
+
+.img {
+  display: block;
+  width: 50%;
+}
+
+
+/* Container to hold both chart and image side by side */
+.content-container {
+  display: flex;                /* Use flexbox for side-by-side layout */
+  justify-content: space-between; /* Space out the elements */
+  align-items: flex-start;      /* Align items to the top */
+}
+
+/* Style for the Macros Chart */
+.macros-graph {
+  width: 55%;                   /* Set width for the chart */
+}
+
+.section {
+position: relative;
+padding: 20px;
+color: white;
+text-align: center;
+width: 100%;
+}
+
+/* Square background */
+.background-square {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 75%;
+height: 75%;
+background-color: rgba(255, 255, 255, 0.1);
+z-index: -1; /* Push it behind the content */
+}
+
+/* Section 1 styling */
+.section-1 {
+background-color: #FF6F61;  /* Light red */
+}
+
+/* Section 2 styling */
+.section-2 {
+background-color: #4F81BD; /* Light blue */
+}
+/* Content styling */
+.content {
+position: relative;
+z-index: 1; /* Keep content above the square */
+}
+/* Layout for content inside each section */
+.content-container {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+}
+
+
+/*_______________________________________________________________index.html______________________________________________________________________ */
+
+.squareinsquare {
+  width: 180px;               /* Set the width of the square */
+  height: 50px;              /* Set the height to make it square */
+  background-color: #ab8b35;  /* background color */
+  color: white;               /* Text color */
+  font-size: 20px;            /* Text size */
+  display: flex;              /* Use flexbox for centering text */
+  justify-content: center;    /* Center the text horizontally */
+  align-items: center;        /* Center the text vertically */
+  margin: 20px auto;          /* Center the square horizontally */
+  text-align: center;         /* Ensure text is centered */
+  border-radius: 10px;        /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+}
+
+
+/*_______________________________________________________________searchpage.html______________________________________________________________________ */
+
+/*_______________________________________________________________registrants.html______________________________________________________________________ */
+
+/*_______________________________________________________________login.html______________________________________________________________________ */
+
+/*_______________________________________________________________information.html______________________________________________________________________ */
+
+.bg-image {
+  /* Full height */
+  height: 80%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Images used */
+.img1 { background-image: url("{{ url_for('static', filename='img_a.jpg') }}"); }
+.img2 { background-image: url("{{ url_for('static', filename='img_b.jpg') }}"); }
+.img3 { background-image: url("{{ url_for('static', filename='img_c.jpg') }}"); }
+.img4 { background-image: url("{{ url_for('static', filename='img_d.jpg') }}"); }
+.img5 { background-image: url("{{ url_for('static', filename='img_e.jpg') }}"); }
+.img6 { background-image: url("{{ url_for('static', filename='img_f.jpg') }}"); }
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  font-size: 80px;
+  border: 10px solid #f1f1f1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+
+/*_______________________________________________________________hvk.html______________________________________________________________________ */
+.square1 {
+  width: 300px;               /* Set the width of the square */
+  height: 400px;              /* Set the height to make it square */
+  background-color: #8894B7;  /* Green background color */
+  color: white;               /* Text color */
+  font-size: 15px;            /* Text size */
+  display: flex;              /* Use flexbox for centering text */
+  justify-content: center;    /* Center the text horizontally */
+  align-items: center;        /* Center the text vertically */
+  margin: 20px auto;          /* Center the square horizontally */
+  text-align: center;         /* Ensure text is centered */
+  border-radius: 10px;        /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+}
+.squareinsquare1 {
+      width: 280px;               /* Set the width of the square */
+      height: 50px;              /* Set the height to make it square */
+      background-color: #5f6780;  /* Green background color */
+      color: white;               /* Text color */
+      font-size: 15px;            /* Text size */
+      display: flex;              /* Use flexbox for centering text */
+      justify-content: center;    /* Center the text horizontally */
+      align-items: center;        /* Center the text vertically */
+      margin: 20px auto;          /* Center the square horizontally */
+      text-align: center;         /* Ensure text is centered */
+      border-radius: 10px;        /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+      }
+
+
+    .button1 {
+          padding: 5px 10px; /* Add some padding for better appearance */
+          font-size: 0.8rem; /* Adjust font size */
+          background-color: #c49f3d; /* Initial background color */
+          color: white; /* Initial text color */
+          border: 2px solid #ccc; /* Add a border */
+          border-color: #c49f3d;
+          border-radius: 5px; /* Round the corners */
+          cursor: pointer; /* Change cursor to pointer on hover */
+          transition-duration: 0.4s; /* Smooth transition */
+  }
+
+  .button1:hover {
+      background-color: #5f6780;
+      color: white; /* White text on hover */
+  }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Frontpage</title>
+    <!-- Load Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart', 'line', 'scatter'] });
+
+        google.charts.setOnLoadCallback(drawMacrosChart);
+        google.charts.setOnLoadCallback(drawScatterChart);
+
+        function drawMacrosChart() {
+            const macrosData = google.visualization.arrayToDataTable({{ macros_data | safe }});
+            const options = {
+                title: 'Macronutrient Breakdown',
+                pieHole: 0.4,
+                colors: ['#FF6384', '#36A2EB', '#FFCE56']
+            };
+            const chart = new google.visualization.PieChart(document.getElementById('macrosChart'));
+            chart.draw(macrosData, options);
+        }
+
+        function drawScatterChart() {
+            const combinedData = new google.visualization.DataTable();
+            combinedData.addColumn('number', 'Calories (kcal)');
+            combinedData.addColumn('number', 'CO2 Emissions (kg CO2)');
+            combinedData.addColumn({ type: 'string', role: 'style' });
+            combinedData.addColumn({ type: 'string', role: 'tooltip' });
+
+            combinedData.addRow([2000, 4, 'point {color: #DDC5A9; size: 6}', 'Average Person']);
+            combinedData.addRow([{{ total_calories }}, {{ total_co2 }}, 'point {color: #6FA96F; size: 8}', 'Your Data']);
+
+            const options = {
+                title: 'Calories vs CO2 Emissions',
+                hAxis: { title: 'Calories (kcal)', minValue: 0, maxValue: 3000 },
+                vAxis: { title: 'CO2 Emissions (kg CO2)', minValue: 0, maxValue: 10 },
+                legend: 'none',
+                pointSize: 8
+            };
+
+            const chart = new google.visualization.ScatterChart(document.getElementById('scatterChart'));
+            chart.draw(combinedData, options);
+        }
+    </script>
+</head>
+<body>
+    <style>
+        h1, h2 {
+            padding: 20px;
+            background-color: #F5C74D;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .chart-container {
+            width: 60%;
+        }
+        .text-box {
+            width: 35%;
+            padding: 20px;
+            background-color: #F5F5F5;
+            border-radius: 10px;
+        }
+        .graph {
+            margin-top: 20px;
+        }
+    </style>
+
+    {% if Username %}
+        <p>You are logged in as {{ Username }}. <a href="/logout">Log out</a>.</p>
+    {% else %}
+        <p>You are not logged in</p>
+        <button onclick="window.location.href='/login'">Log in</button>
+    {% endif %}
+    
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('frontpage') }}">Frontpage</a></li>
+            <li><a href="{{ url_for('information') }}">Information</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+        </ul>
+    </nav>
+
+    <div class="section">
+        <h1>Welcome {{ Username }}</h1>
+    </div>
+
+    <!-- Macronutrient Breakdown Section -->
+    <div class="section">
+        <h2>Macronutrient Breakdown</h2>
+        <div class="flex-container">
+            <div id="macrosChart" class="chart-container" style="height: 500px;"></div>
+            <div class="text-box">
+                <h3>General Information</h3>
+                <p>
+                    A balanced diet supports health and energy by aligning calorie intake with your goals. Prioritize protein (1.2–2.0 g/kg body weight) for muscle repair, healthy fats (20–35% of calories), and complex carbs (45–65% of calories) for energy. Include fiber-rich foods and stay hydrated with 2–3 liters of water daily.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carbon Footprint Section -->
+    <div class="section">
+        <h2>Carbon Footprint Analysis</h2>
+        <div class="flex-container">
+            <div id="scatterChart" class="chart-container" style="height: 500px;"></div>
+            
+            <!-- Combined CO2 Emission Summary and Comparison Box -->
+            <div class="text-box">
+                <!-- CO2 Emission Summary Block -->
+                <div>
+                    <h2>CO2 Emission Summary</h2>
+                    <div id="averageCO2">Average CO2 Emission Per Meal: {{ average_co2 }} kg</div>
+                </div>
+
+                <!-- CO2 Comparison Block with dynamic background color -->
+                <div style="background-color: {{ 'green' if co2_color == 'green' else 'initial' }};">
+                    <h2>CO2 Comparison</h2>
+                    <p style="color: {{ co2_color }};">{{ co2_comparison }}</p>
+                    <div>
+                        {% if co2_color == 'green' %}
+                            <span style="font-size: 50px;">😊</span>
+                        {% elif co2_color == 'yellow' %}
+                            <span style="font-size: 50px;">😐</span>
+                        {% else %}
+                            <span style="font-size: 50px;">☹️</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
