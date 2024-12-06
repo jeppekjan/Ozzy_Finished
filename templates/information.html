@@ -1,110 +1,62 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-
         <title>Ozzy the Orange Ostrich</title>
-
 </head>
-
 <body>
-
     {% if Username %}
-
     <p>You are logged in as {{ Username }}. <a href="/logout">Log out</a>.</p>
-
     {% else %}
-
     <p style="display: inline;">You are not logged in. </p>
-
     <button type="button" onclick="window.location.href='/'">Log in</button>
-
     {% endif %}
-
     
-
     <!-- Navigation Bar -->
-
     <nav>
-
         <ul>
-
             <li><a href="{{ url_for('frontpage') }}">Frontpage</a></li>
-
             <li><a href="{{ url_for('information') }}">Information</a></li>
-
             <li><a href="{{ url_for('search') }}">Search</a></li>
-
         </ul>
-
     </nav>
 
-
     <style>
-
         body, html {
-
           height: 100%;
-
           margin: 0;
-
           font-family: Arial, Helvetica, sans-serif;
-
         }
-
 
         * {
-
           box-sizing: border-box;
-
         }
-
     </style>
 
-
     <div class="bg-image img1"></div>
-
     <div class="bg-image img2"></div>
-
     <div class="bg-image img3"></div>
-
     <div class="bg-image img4"></div>
-
     <div class="bg-image img5"></div>
-
     <div class="bg-image img6"></div>
-
     <div class="bg-text">TEXT</div>
 
-
     <!-- Main Content -->
-
     <p>Transparency</p>
-
     <p>Tips & Tricks for health inside and out</p>
-
 
     <p>
         Our data regarding food products comes from "The Great Climate Database." The CO2<sup>e</sup> that each food product possesses is measured as follows, according to 
-        <a href="https://concito.dk/prose">The Great Climate Database</a>: "Fødevarernes klimaaftryk
-            er oplyst i kg CO2-ækvjekter/store-klimadatabaivalenter (CO2e) per kg vare (nettovægt)
-            og udtrykker den fremadrettede globale klimakonsekvens af at forbruge de forskellige fødevaretyper.
-            CO2e inkluderer klimapåvirkningen fra udledning af CO2 og andre drivhusgasser som metan og lattergas 
-            samt den indirekte arealændring som fødevareproduktionen giver anledning til.”
+        <a href="https://concito.dk/projekter/store-klimadatabase">The Great Climate Database</a>: "The climate footprint of food products is stated in kg CO2 equivalents (CO2e) per kg of product (net weight) 
+        and expresses the forward-looking global climate consequences of consuming different types of food. CO2e includes the climate impact from the emission of CO2 
+        and other greenhouse gases such as methane and nitrous oxide, as well as the indirect land-use change that food production causes."
     </p>
-
 
     <p>
         The database provides the content of the food per 100g. When you enter the grams you use, we calculate it as follows: 
         "food product * your input in grams / 100," and for CO2<sup>e</sup>, we calculate it as: "food product * your input / 1000." 
-        The reason we divide by 1000 for CO2<sup>e</sup> is that
-        the climate database states the CO2<sup>e</sup> of food products in kg, and we want to show it to you in grams.
+        The reason we divide by 1000 for CO2<sup>e</sup> is that the climate database states the CO2<sup>e</sup> of food products in kg, and we want to show it to you in grams.
     </p>
 
-
 </body>
-
 </html>
