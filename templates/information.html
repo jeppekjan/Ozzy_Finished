@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
     <p style="display: inline;">You are not logged in. </p>
     <button type="button" onclick="window.location.href='/'">Log in</button>
     {% endif %}
+    
     <!-- Navigation Bar -->
     <nav>
         <ul>
@@ -30,8 +32,7 @@
         * {
           box-sizing: border-box;
         }
-
-        </style>
+    </style>
 
     <div class="bg-image img1"></div>
     <div class="bg-image img2"></div>
@@ -41,11 +42,22 @@
     <div class="bg-image img6"></div>
     <div class="bg-text">TEXT</div>
 
-
-
-
     <!-- Main Content -->
     <p>Transparency</p>
     <p>Tips & Tricks for health inside and out</p>
+
+    <p>
+        Vores data omkring fødevarene kommer fra ”Den Store Klima Database”. Den CO2<sup>e</sup> som hver fødevare besidder er målt således ifølge 
+        <a href="https://concito.dk/projekter/store-klimadatabase">Den Store Klima Database</a>: ”Fødevarernes klimaaftryk er oplyst i kg CO2-ækvivalenter (CO2e) per kg vare (nettovægt) 
+        og udtrykker den fremadrettede globale klimakonsekvens af at forbruge de forskellige fødevaretyper. CO2e inkluderer klimapåvirkningen fra udledning af CO2 
+        og andre drivhusgasser som metan og lattergas samt den indirekte arealændring som fødevareproduktionen giver anledning til.”
+    </p>
+
+    <p>
+        Databasen udgiver fødevarens indhold pr. 100g, når du taster de gram du benytter ind udregner vi det på følgende måde: 
+        ”fødevaren * dit input af gram / 100” og for CO2<sup>e</sup> udregner vi det således: ”fødevaren * dit input / 1000”. 
+        Grunden til det er 1000 vi deler med ved CO2<sup>e</sup> er at klimadatabsen oplyser fødevarens CO2<sup>e</sup> i kg og vi ønsker at vise det til jer i gram.
+    </p>
+
 </body>
 </html>
